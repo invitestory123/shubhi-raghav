@@ -4,14 +4,15 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  HeadContent,
-  Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { wedding } from "../lib/wedding";
+import { invitation } from "../content/invitation";
+
+const siteTitle = `${invitation.couple.bride} & ${invitation.couple.groom} — Wedding Celebrations | 3–5 December 2026`;
+const siteDescription = `Together with their families, ${invitation.couple.bride} & ${invitation.couple.groom} cordially invite you to celebrate their wedding celebrations on 3–5 December 2026 at ${invitation.venue.name}, ${invitation.venue.city}.`;
 
 function NotFoundComponent() {
   return (
@@ -78,23 +79,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { title: wedding.meta.title },
-      { name: "description", content: wedding.meta.description },
+      { title: siteTitle },
+      { name: "description", content: siteDescription },
       { name: "author", content: "InviteStory" },
-      { property: "og:title", content: wedding.meta.ogTitle },
-      { property: "og:description", content: wedding.meta.ogDescription },
+      { property: "og:title", content: siteTitle },
+      { property: "og:description", content: siteDescription },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: wedding.meta.ogImage },
-      { property: "og:image:secure_url", content: wedding.meta.ogImage },
-      { property: "og:image:type", content: wedding.meta.ogImageType },
-      { property: "og:image:alt", content: wedding.meta.ogImageAlt },
-      { property: "og:site_name", content: wedding.meta.ogSiteName },
+      { property: "og:image", content: "/og-image.png" },
+      { property: "og:image:secure_url", content: "/og-image.png" },
+      { property: "og:image:type", content: "image/png" },
+      {
+        property: "og:image:alt",
+        content: `${invitation.couple.title} Wedding Celebrations | Ananta Spa & Resort, Jaipur`,
+      },
+      { property: "og:site_name", content: "InviteStory" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@invitestory.in" },
-      { name: "twitter:title", content: wedding.meta.ogTitle },
-      { name: "twitter:description", content: wedding.meta.ogDescription },
-      { name: "twitter:image", content: wedding.meta.ogImage },
-      { name: "twitter:image:alt", content: wedding.meta.ogImageAlt },
+      { name: "twitter:title", content: siteTitle },
+      { name: "twitter:description", content: siteDescription },
+      { name: "twitter:image", content: "/og-image.png" },
+      {
+        name: "twitter:image:alt",
+        content: `${invitation.couple.title} Wedding Celebrations | Ananta Spa & Resort, Jaipur`,
+      },
     ],
     links: [
       {
@@ -105,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Rozha+One&family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Karla:wght@300;400;500;600&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
@@ -120,7 +127,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
   );
