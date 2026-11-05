@@ -5,7 +5,7 @@ import garden from "@/assets/garden-courtyard.jpg";
 import { invitation } from "@/content/invitation";
 import { Ornament, Reveal, SectionTitle } from "./Reveal";
 
-const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
+const romanNumerals = ["I", "II", "III", "IV", "V", "VI", "VII"];
 
 export function Timeline() {
   const ref = useRef<HTMLDivElement>(null);
@@ -39,7 +39,7 @@ export function Timeline() {
       />
 
       <div className="mx-auto max-w-4xl">
-        {/* Header matching user screenshots (Image 4) */}
+        {/* Header matching user screenshots */}
         <SectionTitle
           eyebrow="Itinerary & Auspicious Ceremonies"
           title="Wedding Celebrations"
@@ -53,19 +53,19 @@ export function Timeline() {
           <svg
             aria-hidden
             className="absolute top-0 left-2.5 sm:left-4 h-full w-8 pointer-events-none"
-            viewBox="0 0 40 1400"
+            viewBox="0 0 40 1600"
             preserveAspectRatio="none"
             fill="none"
           >
             <motion.path
-              d="M20 0 C34 140, 6 280, 20 420 C34 560, 6 700, 20 840 C34 980, 6 1120, 20 1260 C34 1330, 20 1400, 20 1400"
+              d="M20 0 C34 140, 6 280, 20 420 C34 560, 6 700, 20 840 C34 980, 6 1120, 20 1260 C34 1400, 6 1500, 20 1600"
               stroke="var(--olive)"
               strokeWidth="2.4"
               strokeLinecap="round"
               opacity="0.65"
               style={{ pathLength: draw }}
             />
-            {[100, 320, 560, 800, 1040, 1280].map((y, i) => (
+            {[90, 290, 510, 730, 950, 1170, 1390].map((y, i) => (
               <motion.ellipse
                 key={y}
                 cx={i % 2 ? 30 : 10}
@@ -117,7 +117,7 @@ export function Timeline() {
                       {event.description}
                     </p>
 
-                    {/* Circled part in user images: Time and Venue with INCREASED FONT SIZE for elders & hall/lawn only */}
+                    {/* Circled part: Time and Venue with LARGE BOLD FONT for elders & hall/lawn only */}
                     <div className="mt-5 rounded-2xl bg-[color-mix(in_oklab,var(--card)_80%,transparent)] p-4 sm:p-5 border border-[color-mix(in_oklab,var(--gold)_30%,transparent)] shadow-2xs">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-6">
                         {/* Time */}
@@ -175,7 +175,7 @@ export function Timeline() {
             ))}
           </div>
 
-          {/* Active day events panel with large, clear font sizes for elders */}
+          {/* Active day events panel with large, clear font sizes and matching highlighted pills for time and venue */}
           <Reveal delay={0.1} className="mt-8">
             <div className="plate paper-grain rounded-[2.2rem] p-6 sm:p-9 border-2 border-[color-mix(in_oklab,var(--gold)_35%,transparent)] shadow-lg">
               <div className="text-center pb-6 border-b border-[color-mix(in_oklab,var(--gold)_25%,transparent)]">
@@ -191,9 +191,9 @@ export function Timeline() {
                 {invitation.itineraryDays[activeDay]?.events.map((ev, i) => (
                   <div
                     key={i}
-                    className="py-5 first:pt-2 last:pb-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+                    className="py-5 first:pt-2 last:pb-2 flex flex-col md:flex-row md:items-center md:justify-between gap-3"
                   >
-                    <div>
+                    <div className="flex-1 pr-2">
                       <div className="flex items-center gap-2.5">
                         <h4 className="font-display text-lg sm:text-xl md:text-2xl text-primary font-semibold">
                           {ev.title}
@@ -205,12 +205,6 @@ export function Timeline() {
                         )}
                       </div>
 
-                      {/* Venue: Hall or Lawn only with prominent font */}
-                      <p className="font-sans text-sm sm:text-base font-semibold text-gold-deep flex items-center gap-1.5 mt-1">
-                        <MapPin size={15} className="shrink-0" />
-                        {ev.venue}
-                      </p>
-
                       {ev.note && (
                         <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
                           {ev.note}
@@ -218,11 +212,20 @@ export function Timeline() {
                       )}
                     </div>
 
-                    {/* Time pill with prominent font */}
-                    <span className="font-sans text-sm sm:text-base tracking-wide text-primary font-bold shrink-0 self-start sm:self-center bg-[color-mix(in_oklab,var(--ivory)_95%,transparent)] px-4 py-1.5 rounded-full border border-[color-mix(in_oklab,var(--gold)_30%,transparent)] shadow-2xs flex items-center gap-2">
-                      <Clock size={15} className="text-gold-deep" />
-                      {ev.time}
-                    </span>
+                    {/* Both Venue and Time highlighted in matching prominent pills */}
+                    <div className="flex flex-wrap items-center gap-2.5 shrink-0 self-start md:self-center mt-1 md:mt-0">
+                      {/* Highlighted Venue Pill */}
+                      <span className="font-sans text-xs sm:text-sm tracking-wide text-primary font-bold bg-[color-mix(in_oklab,var(--ivory)_95%,transparent)] px-3.5 py-1.5 rounded-full border border-[color-mix(in_oklab,var(--gold)_30%,transparent)] shadow-2xs flex items-center gap-1.5">
+                        <MapPin size={15} className="text-gold-deep shrink-0" />
+                        {ev.venue}
+                      </span>
+
+                      {/* Highlighted Time Pill */}
+                      <span className="font-sans text-xs sm:text-sm tracking-wide text-primary font-bold bg-[color-mix(in_oklab,var(--ivory)_95%,transparent)] px-3.5 py-1.5 rounded-full border border-[color-mix(in_oklab,var(--gold)_30%,transparent)] shadow-2xs flex items-center gap-1.5">
+                        <Clock size={15} className="text-gold-deep shrink-0" />
+                        {ev.time}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>

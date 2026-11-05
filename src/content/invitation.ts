@@ -109,7 +109,7 @@ export const invitation = {
       venue: "Triangular Lawn",
       address: "Triangular Lawn, Jaipur",
       description:
-        "A delightful culinary feast to warmly welcome all our guests and commence our wedding celebrations.",
+        "A delightful culinary feast to warmly welcome all our guests and commence our wedding celebrations. Henna artists will be available during lunch.",
       dateISO: "2026-12-03T12:00:00+05:30",
       mapsQuery: "Ananta Spa and Resorts Jaipur",
     },
@@ -147,7 +147,7 @@ export const invitation = {
       venue: "Ikigai Lawn",
       address: "Ikigai Lawn, Jaipur",
       description:
-        "Sun-kissed turmeric rituals, vibrant beats, fresh floral blooms & joyful splashes of love.",
+        "Sun-kissed turmeric rituals, vibrant beats, fresh floral blooms & joyful splashes of love. Henna artists will be available during haldi.",
       dateISO: "2026-12-04T12:00:00+05:30",
       mapsQuery: "Ananta Spa and Resorts Jaipur",
     },
@@ -177,6 +177,19 @@ export const invitation = {
       dateISO: "2026-12-04T19:00:00+05:30",
       mapsQuery: "Ananta Spa and Resorts Jaipur",
     },
+    {
+      id: "pheras",
+      name: "Pheras",
+      day: "Day 2",
+      date: "Friday, 4 December 2026",
+      time: "11:00 PM",
+      venue: "Waterfall Lawn",
+      address: "Waterfall Lawn, Jaipur",
+      description:
+        "Under the stars and around the sacred fire, SHUBHI and RAGHAV take the vows - officially beginning forever and a lifetime of deciding what to order for dinner",
+      dateISO: "2026-12-04T23:00:00+05:30",
+      mapsQuery: "Ananta Spa and Resorts Jaipur",
+    },
   ] as EventItem[],
 
   itineraryDays: [
@@ -195,11 +208,11 @@ export const invitation = {
           time: "12:00 PM – 4:00 PM",
           title: "Welcome Lunch",
           venue: "Triangular Lawn",
-          note: "A delightful culinary feast to commence our celebrations.",
+          note: "A delightful culinary feast to commence our celebrations. Henna artists will be available during lunch.",
         },
         {
           time: "4:00 PM",
-          title: "High Tea",
+          title: "Hi - Tea",
           venue: "Kissaten Tea Lounge",
           note: "Artisanal teas, brews and savory evening nibbles.",
         },
@@ -225,7 +238,7 @@ export const invitation = {
       events: [
         {
           time: "7:30 AM – 10:30 AM",
-          title: "Breakfast Buffet",
+          title: "Celebratory Breakfast",
           venue: "Shio Kosho Restaurant",
           note: "Energizing morning spread to fuel the festivities.",
         },
@@ -239,11 +252,11 @@ export const invitation = {
           time: "12:00 PM (Noon)",
           title: "Haldi Celebration",
           venue: "Ikigai Lawn",
-          note: "Sun-kissed turmeric rituals, vibrant beats & joyful splashes.",
+          note: "Sun-kissed turmeric rituals, vibrant beats & joyful splashes. Henna artists will be available during haldi.",
         },
         {
           time: "4:00 PM",
-          title: "High Tea",
+          title: "Hi - Tea",
           venue: "Kissaten Tea Lounge",
           note: "Relax and rejuvenate before the grand evening.",
         },
@@ -260,8 +273,14 @@ export const invitation = {
           note: "Varmala, sacred vows around the holy fire & wedding reception dinner.",
         },
         {
+          time: "11:00 PM",
+          title: "Pheras",
+          venue: "Waterfall Lawn",
+          note: "Under the stars and around the sacred fire, SHUBHI and RAGHAV take the vows - officially beginning forever and a lifetime of deciding what to order for dinner",
+        },
+        {
           time: "Round the Clock",
-          title: "Tea & Snacks",
+          title: "Brew",
           venue: "Kissaten Tea Lounge",
           note: "24-hour refreshments available for guests at all hours.",
           is24hr: true,
@@ -275,12 +294,12 @@ export const invitation = {
       events: [
         {
           time: "7:30 AM – 10:30 AM",
-          title: "Breakfast Buffet",
+          title: "GoodBye Breakfast",
           venue: "Shio Kosho Restaurant",
           note: "Hearty farewell breakfast with family and friends.",
         },
         {
-          time: "10:00 AM",
+          time: "9:00 AM",
           title: "Check-out & Departures",
           venue: "Front Desk",
           note: "Cherishing beautiful memories as we bid adieu.",
@@ -304,11 +323,6 @@ export const invitation = {
       title: "Women's Salon",
       description: "Hair styling, draping & makeup assistance. Please enquire at the hospitality desk.",
       icon: "Sparkles",
-    },
-    {
-      title: "In-Room Amenities",
-      description: "Steam iron and hair dryer are thoughtfully equipped in all guest rooms.",
-      icon: "Home",
     },
   ] as GuestService[],
 

@@ -6,7 +6,6 @@ import { Countdown } from "@/components/invitation/Countdown";
 import { Timeline } from "@/components/invitation/Timeline";
 import { VenueSection } from "@/components/invitation/VenueSection";
 import { GuestServices } from "@/components/invitation/GuestServices";
-import { Gallery } from "@/components/invitation/Gallery";
 import { Footer } from "@/components/invitation/Footer";
 import { BgmPlayer } from "@/components/invitation/BgmPlayer";
 import { invitation } from "@/content/invitation";
@@ -54,7 +53,6 @@ function Index() {
       <Timeline />
       <VenueSection />
       <GuestServices />
-      <Gallery />
       <Footer />
       <BgmPlayer />
     </main>
