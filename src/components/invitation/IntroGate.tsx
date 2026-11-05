@@ -28,8 +28,17 @@ export function IntroGate() {
     };
   }, [stage]);
 
+  const startSong = () => {
+    const audio = document.getElementById("wedding-bgm") as HTMLAudioElement | null;
+    if (audio) {
+      void audio.play().catch(() => {});
+    }
+    window.dispatchEvent(new CustomEvent("wedding-bgm-play"));
+  };
+
   const open = () => {
     if (stage !== "seal") return;
+    startSong();
     setStage("film");
     const el = videoRef.current;
     if (!el) return;
@@ -38,6 +47,7 @@ export function IntroGate() {
   };
 
   const finish = () => {
+    startSong();
     if (fading) return;
     setFading(true);
     window.setTimeout(() => setStage("done"), 1300);

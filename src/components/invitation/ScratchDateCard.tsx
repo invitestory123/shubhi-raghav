@@ -257,37 +257,13 @@ export function ScratchDateCard() {
     <div className="relative mx-auto max-w-xl px-2 sm:px-0">
       <div
         ref={containerRef}
-        className="plate paper-grain relative overflow-hidden rounded-[2.2rem] border-2 border-[color-mix(in_oklab,var(--gold)_45%,transparent)] p-6 sm:p-9 shadow-lg"
+        className="plate paper-grain relative overflow-hidden rounded-[2.2rem] border-2 border-[color-mix(in_oklab,var(--gold)_45%,transparent)] p-8 sm:p-12 shadow-lg min-h-[220px] flex items-center justify-center"
       >
-        {/* Underneath Revealed Content */}
-        <div className="relative z-10 flex flex-col items-center text-center">
-          {/* Sacred Symbol */}
-          <span className="font-devanagari text-xs sm:text-sm tracking-[0.25em] text-gold-deep">
-            ॥ श्री गणेशाय नमः ॥
-          </span>
-
-          <p className="mt-2 font-sans text-[0.62rem] sm:text-xs tracking-[0.32em] text-gold-deep uppercase font-bold">
-            Auspicious Wedding Ceremony
-          </p>
-
-          <h3 className="mt-2 font-display text-2xl sm:text-4xl font-medium tracking-wide text-primary">
-            {invitation.weddingDayLabel}
+        {/* Underneath Revealed Content: Only "4 December 2026" and Add to Calendar button */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center">
+          <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-wide text-primary">
+            4 December 2026
           </h3>
-
-          <div className="my-3 flex items-center justify-center gap-2">
-            <span className="h-[1px] w-12 bg-gold-deep/40" />
-            <Sparkles className="text-gold-deep" size={16} />
-            <span className="h-[1px] w-12 bg-gold-deep/40" />
-          </div>
-
-          <p className="font-script text-xl sm:text-2xl text-gold-deep italic">
-            {invitation.timeLabel}
-          </p>
-
-          <p className="mt-3 inline-flex items-center gap-2 rounded-full px-4 py-1.5 bg-gold-deep/10 font-sans text-xs sm:text-sm text-primary font-medium border border-gold-deep/20">
-            <span className="text-gold-deep font-bold">Celebrations:</span>
-            <span className="font-semibold">{invitation.dateLabel}</span>
-          </p>
 
           {/* Sparkle burst effect on reveal */}
           <AnimatePresence>
@@ -329,16 +305,16 @@ export function ScratchDateCard() {
             )}
           </AnimatePresence>
 
-          {/* Action CTAs */}
-          <div className="mt-6 flex flex-wrap justify-center gap-2.5 sm:gap-3">
+          {/* Action CTA */}
+          <div className="mt-6 flex flex-wrap justify-center">
             <motion.a
               href={buildIcs()}
               download={`${invitation.couple.bride.toLowerCase()}-${invitation.couple.groom.toLowerCase()}-wedding.ics`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 font-sans text-[0.68rem] tracking-[0.2em] text-primary-foreground uppercase shadow-md font-semibold cursor-pointer"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 font-sans text-xs sm:text-sm tracking-[0.2em] text-primary-foreground uppercase shadow-md font-semibold cursor-pointer"
             >
-              <CalendarPlus size={15} /> Add to Calendar
+              <CalendarPlus size={16} /> Add to Calendar
             </motion.a>
           </div>
         </div>

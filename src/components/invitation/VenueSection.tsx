@@ -184,29 +184,21 @@ export function VenueSection() {
               </div>
 
               {/* Transit & Arrival Guide */}
-              <div className="mt-6 pt-5 border-t border-[color-mix(in_oklab,var(--gold)_18%,transparent)] grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="rounded-xl bg-background/50 p-3 border border-border/50">
+              <div className="mt-6 pt-5 border-t border-[color-mix(in_oklab,var(--gold)_18%,transparent)] grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="rounded-xl bg-background/50 p-3.5 border border-border/50">
                   <p className="font-sans text-[0.58rem] tracking-[0.2em] text-gold-deep uppercase font-bold">
                     Jaipur Airport (JAI)
                   </p>
-                  <p className="font-display text-sm text-primary font-medium mt-0.5">
+                  <p className="font-display text-sm sm:text-base text-primary font-medium mt-0.5">
                     ~42 km (approx. 50 mins)
                   </p>
                 </div>
-                <div className="rounded-xl bg-background/50 p-3 border border-border/50">
+                <div className="rounded-xl bg-background/50 p-3.5 border border-border/50">
                   <p className="font-sans text-[0.58rem] tracking-[0.2em] text-gold-deep uppercase font-bold">
                     Railway Station
                   </p>
-                  <p className="font-display text-sm text-primary font-medium mt-0.5">
+                  <p className="font-display text-sm sm:text-base text-primary font-medium mt-0.5">
                     ~34 km (approx. 40 mins)
-                  </p>
-                </div>
-                <div className="rounded-xl bg-background/50 p-3 border border-border/50">
-                  <p className="font-sans text-[0.58rem] tracking-[0.2em] text-gold-deep uppercase font-bold">
-                    Delhi-Jaipur Highway
-                  </p>
-                  <p className="font-display text-sm text-primary font-medium mt-0.5">
-                    Direct NH-8 · Valet Parking
                   </p>
                 </div>
               </div>

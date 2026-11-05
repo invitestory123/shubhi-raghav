@@ -12,6 +12,7 @@ export interface EventItem {
   venue: string;
   address?: string;
   description: string;
+  specialNote?: string;
   dateISO: string;
   mapsQuery: string;
   mapsUrl?: string;
@@ -109,7 +110,8 @@ export const invitation = {
       venue: "Triangular Lawn",
       address: "Triangular Lawn, Jaipur",
       description:
-        "A delightful culinary feast to warmly welcome all our guests and commence our wedding celebrations. Henna artists will be available during lunch.",
+        "A delightful culinary feast to warmly welcome all our guests and commence our wedding celebrations.",
+      specialNote: "Henna artists will be available during lunch",
       dateISO: "2026-12-03T12:00:00+05:30",
       mapsQuery: "Ananta Spa and Resorts Jaipur",
     },
@@ -147,7 +149,8 @@ export const invitation = {
       venue: "Ikigai Lawn",
       address: "Ikigai Lawn, Jaipur",
       description:
-        "Sun-kissed turmeric rituals, vibrant beats, fresh floral blooms & joyful splashes of love. Henna artists will be available during haldi.",
+        "Sun-kissed turmeric rituals, vibrant beats, fresh floral blooms & joyful splashes of love.",
+      specialNote: "Henna artists will be available during haldi",
       dateISO: "2026-12-04T12:00:00+05:30",
       mapsQuery: "Ananta Spa and Resorts Jaipur",
     },
@@ -177,19 +180,6 @@ export const invitation = {
       dateISO: "2026-12-04T19:00:00+05:30",
       mapsQuery: "Ananta Spa and Resorts Jaipur",
     },
-    {
-      id: "pheras",
-      name: "Pheras",
-      day: "Day 2",
-      date: "Friday, 4 December 2026",
-      time: "11:00 PM",
-      venue: "Waterfall Lawn",
-      address: "Waterfall Lawn, Jaipur",
-      description:
-        "Under the stars and around the sacred fire, SHUBHI and RAGHAV take the vows - officially beginning forever and a lifetime of deciding what to order for dinner",
-      dateISO: "2026-12-04T23:00:00+05:30",
-      mapsQuery: "Ananta Spa and Resorts Jaipur",
-    },
   ] as EventItem[],
 
   itineraryDays: [
@@ -208,7 +198,7 @@ export const invitation = {
           time: "12:00 PM – 4:00 PM",
           title: "Welcome Lunch",
           venue: "Triangular Lawn",
-          note: "A delightful culinary feast to commence our celebrations. Henna artists will be available during lunch.",
+          note: "A delightful culinary feast to commence our celebrations. **Henna artists will be available during lunch.**",
         },
         {
           time: "4:00 PM",
@@ -224,7 +214,7 @@ export const invitation = {
         },
         {
           time: "Round the Clock",
-          title: "Brews & Bites",
+          title: "Brew & Bites",
           venue: "Kissaten Tea Lounge",
           note: "24-hour refreshment station with hot beverages & light snacks.",
           is24hr: true,
@@ -252,7 +242,7 @@ export const invitation = {
           time: "12:00 PM (Noon)",
           title: "Haldi Celebration",
           venue: "Ikigai Lawn",
-          note: "Sun-kissed turmeric rituals, vibrant beats & joyful splashes. Henna artists will be available during haldi.",
+          note: "Sun-kissed turmeric rituals, vibrant beats & joyful splashes. **Henna artists will be available during haldi.**",
         },
         {
           time: "4:00 PM",
@@ -273,14 +263,8 @@ export const invitation = {
           note: "Varmala, sacred vows around the holy fire & wedding reception dinner.",
         },
         {
-          time: "11:00 PM",
-          title: "Pheras",
-          venue: "Waterfall Lawn",
-          note: "Under the stars and around the sacred fire, SHUBHI and RAGHAV take the vows - officially beginning forever and a lifetime of deciding what to order for dinner",
-        },
-        {
           time: "Round the Clock",
-          title: "Brew",
+          title: "Brew & Bites",
           venue: "Kissaten Tea Lounge",
           note: "24-hour refreshments available for guests at all hours.",
           is24hr: true,

@@ -7,6 +7,24 @@ import { Ornament, Reveal, SectionTitle } from "./Reveal";
 
 const romanNumerals = ["I", "II", "III", "IV", "V", "VI", "VII"];
 
+function FormattedNote({ text }: { text: string }) {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return (
+    <>
+      {parts.map((part, idx) => {
+        if (part.startsWith("**") && part.endsWith("**")) {
+          return (
+            <strong key={idx} className="font-bold text-primary">
+              {part.slice(2, -2)}
+            </strong>
+          );
+        }
+        return part;
+      })}
+    </>
+  );
+}
+
 export function Timeline() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -117,6 +135,19 @@ export function Timeline() {
                       {event.description}
                     </p>
 
+                    {/* Special note with elegant dignity and prominence without highlight styling */}
+                    {event.specialNote && (
+                      <div className="mt-3.5 border-l-2 border-gold-deep/60 pl-3.5 py-1 flex items-center gap-2">
+                        <span className="text-gold-deep text-sm select-none">✦</span>
+                        <p className="font-sans text-xs sm:text-sm text-primary font-semibold tracking-wide">
+                          <span className="text-gold-deep uppercase tracking-wider text-[0.68rem] font-bold mr-1.5">
+                            Note:
+                          </span>
+                          {event.specialNote}
+                        </p>
+                      </div>
+                    )}
+
                     {/* Circled part: Time and Venue with LARGE BOLD FONT for elders & hall/lawn only */}
                     <div className="mt-5 rounded-2xl bg-[color-mix(in_oklab,var(--card)_80%,transparent)] p-4 sm:p-5 border border-[color-mix(in_oklab,var(--gold)_30%,transparent)] shadow-2xs">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-6">
@@ -207,7 +238,7 @@ export function Timeline() {
 
                       {ev.note && (
                         <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                          {ev.note}
+                          <FormattedNote text={ev.note} />
                         </p>
                       )}
                     </div>
