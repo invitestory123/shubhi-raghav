@@ -1,20 +1,12 @@
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Calendar, Clock, MapPin, Sparkles, Shirt, Scissors, Home } from "lucide-react";
+import { Clock, MapPin, Calendar } from "lucide-react";
 import garden from "@/assets/garden-courtyard.jpg";
 import { invitation } from "@/content/invitation";
 import { Ornament, Reveal, SectionTitle } from "./Reveal";
 
-const romanNumerals = ["I", "II", "III", "IV", "V"];
+const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
 
-const serviceIcons: Record<string, typeof Shirt> = {
-  Shirt,
-  Scissors,
-  Sparkles,
-  Home,
-};
-
-/** Illustrated wedding celebrations timeline stitched together with an animated vine. */
 export function Timeline() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -26,7 +18,8 @@ export function Timeline() {
   const [activeDay, setActiveDay] = useState(0);
 
   return (
-    <section id="celebrations" className="relative overflow-hidden px-5 py-24">
+    <section id="itinerary" className="relative overflow-hidden px-4 sm:px-6 py-24">
+      {/* Background Ambience */}
       <img
         src={garden}
         alt=""
@@ -34,18 +27,19 @@ export function Timeline() {
         loading="lazy"
         width={1536}
         height={1024}
-        className="absolute inset-0 -z-10 h-full w-full object-cover opacity-25"
+        className="absolute inset-0 -z-10 h-full w-full object-cover opacity-20"
       />
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(180deg, var(--ivory) 0%, color-mix(in oklab, var(--ivory) 78%, transparent) 30%, color-mix(in oklab, var(--ivory) 78%, transparent) 70%, var(--ivory) 100%)",
+            "linear-gradient(180deg, var(--ivory) 0%, color-mix(in oklab, var(--ivory) 80%, transparent) 25%, color-mix(in oklab, var(--cream) 80%, transparent) 75%, var(--ivory) 100%)",
         }}
       />
 
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-4xl">
+        {/* Header matching user screenshots (Image 4) */}
         <SectionTitle
           eyebrow="Itinerary & Auspicious Ceremonies"
           title="Wedding Celebrations"
@@ -53,31 +47,31 @@ export function Timeline() {
         />
         <Ornament className="mt-8" />
 
-        {/* Auspicious Major Celebrations */}
-        <div ref={ref} className="relative mt-16 pl-12 sm:pl-16">
-          {/* Animated vine that draws down as the guest scrolls */}
+        {/* Auspicious Major Celebrations Timeline with Vine and Roman Numerals */}
+        <div ref={ref} className="relative mt-16 pl-10 sm:pl-16">
+          {/* Animated decorative vine drawing down as guest scrolls */}
           <svg
             aria-hidden
-            className="absolute top-0 left-3 h-full w-8 sm:left-5 pointer-events-none"
-            viewBox="0 0 40 1200"
+            className="absolute top-0 left-2.5 sm:left-4 h-full w-8 pointer-events-none"
+            viewBox="0 0 40 1400"
             preserveAspectRatio="none"
             fill="none"
           >
             <motion.path
-              d="M20 0 C34 140, 6 260, 20 400 C34 540, 6 680, 20 820 C34 960, 6 1080, 20 1200"
+              d="M20 0 C34 140, 6 280, 20 420 C34 560, 6 700, 20 840 C34 980, 6 1120, 20 1260 C34 1330, 20 1400, 20 1400"
               stroke="var(--olive)"
-              strokeWidth="2.2"
+              strokeWidth="2.4"
               strokeLinecap="round"
               opacity="0.65"
               style={{ pathLength: draw }}
             />
-            {[120, 380, 690, 1010].map((y, i) => (
+            {[100, 320, 560, 800, 1040, 1280].map((y, i) => (
               <motion.ellipse
                 key={y}
                 cx={i % 2 ? 30 : 10}
                 cy={y}
-                rx="9"
-                ry="4.5"
+                rx="8"
+                ry="4"
                 fill="var(--sage)"
                 opacity="0.75"
                 transform={`rotate(${i % 2 ? 24 : -24} ${i % 2 ? 30 : 10} ${y})`}
@@ -89,68 +83,59 @@ export function Timeline() {
           <ol className="space-y-10 sm:space-y-12">
             {invitation.celebrations.map((event, i) => (
               <li key={event.id}>
-                <Reveal delay={i * 0.06}>
+                <Reveal delay={i * 0.05}>
                   <motion.div
                     whileHover={{ x: 6 }}
                     transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                    className="plate paper-grain relative rounded-[1.8rem] px-6 py-7 sm:px-8 border border-[color-mix(in_oklab,var(--gold)_25%,transparent)] shadow-sm"
+                    className="plate paper-grain relative rounded-[2rem] p-6 sm:p-8 border-2 border-[color-mix(in_oklab,var(--gold)_35%,transparent)] shadow-md"
                   >
-                    {/* Badge */}
+                    {/* Roman Numeral Badge */}
                     <span
-                      className="absolute -left-[3.15rem] top-7 flex h-9 w-9 items-center justify-center rounded-full font-display text-xs text-primary-foreground sm:-left-[4.3rem] shadow-sm font-semibold"
+                      className="absolute -left-[2.85rem] sm:-left-[4.1rem] top-7 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full font-display text-sm sm:text-base text-primary-foreground shadow-md font-bold"
                       style={{ background: "var(--gradient-gold)" }}
                     >
                       {romanNumerals[i] || String(i + 1)}
                     </span>
 
+                    {/* Top Row: Day and Date */}
                     <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[color-mix(in_oklab,var(--gold)_20%,transparent)] pb-3">
                       <div>
-                        <span className="font-sans text-[0.62rem] tracking-[0.25em] text-gold-deep uppercase font-bold">
+                        <span className="font-sans text-[0.66rem] sm:text-xs tracking-[0.25em] text-gold-deep uppercase font-bold">
                           {event.day}
                         </span>
-                        <h3 className="font-display text-2xl sm:text-3xl font-medium tracking-wide text-primary">
+                        <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-medium tracking-wide text-primary mt-0.5">
                           {event.name}
                         </h3>
                       </div>
-                      <span className="rounded-full bg-[color-mix(in_oklab,var(--gold)_15%,transparent)] px-3 py-1 font-sans text-[0.62rem] sm:text-xs tracking-[0.16em] text-gold-deep font-semibold">
+                      <span className="rounded-full bg-[color-mix(in_oklab,var(--gold)_15%,transparent)] px-3.5 py-1 font-sans text-xs sm:text-sm tracking-wider text-gold-deep font-semibold">
                         {event.date}
                       </span>
                     </div>
 
-                    <p className="mt-3 text-sm sm:text-base leading-relaxed text-muted-foreground">
+                    {/* Description */}
+                    <p className="mt-3.5 text-sm sm:text-base text-muted-foreground leading-relaxed">
                       {event.description}
                     </p>
 
-                    <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                      <div className="flex items-center gap-2.5 text-primary/85">
-                        <Clock size={16} className="text-gold-deep shrink-0" />
-                        <span className="font-sans text-xs sm:text-sm font-medium">
-                          {event.time}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2.5 text-primary/85">
-                        <MapPin size={16} className="text-gold-deep shrink-0" />
-                        <span className="font-sans text-xs sm:text-sm font-medium">
-                          {event.venue}
-                        </span>
-                      </div>
-                    </div>
+                    {/* Circled part in user images: Time and Venue with INCREASED FONT SIZE for elders & hall/lawn only */}
+                    <div className="mt-5 rounded-2xl bg-[color-mix(in_oklab,var(--card)_80%,transparent)] p-4 sm:p-5 border border-[color-mix(in_oklab,var(--gold)_30%,transparent)] shadow-2xs">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-6">
+                        {/* Time */}
+                        <div className="flex items-center gap-2.5 font-sans text-base sm:text-lg md:text-xl font-bold text-primary">
+                          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-deep/15 text-gold-deep shrink-0">
+                            <Clock size={19} strokeWidth={2.2} />
+                          </span>
+                          <span>{event.time}</span>
+                        </div>
 
-                    <div className="mt-5 pt-3 border-t border-[color-mix(in_oklab,var(--gold)_15%,transparent)] flex items-center justify-between">
-                      <span className="font-script text-sm sm:text-base text-gold-deep italic">
-                        Venue: {event.venue}
-                      </span>
-                      <a
-                        href={
-                          event.mapsUrl ||
-                          `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.mapsQuery)}`
-                        }
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 font-sans text-[0.62rem] tracking-[0.2em] uppercase text-primary hover:text-gold-deep transition-colors font-semibold"
-                      >
-                        <MapPin size={13} /> View Map
-                      </a>
+                        {/* Venue (Hall or Lawn name only) */}
+                        <div className="flex items-center gap-2.5 font-sans text-base sm:text-lg md:text-xl font-bold text-primary">
+                          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-deep/15 text-gold-deep shrink-0">
+                            <MapPin size={19} strokeWidth={2.2} />
+                          </span>
+                          <span>{event.venue}</span>
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
                 </Reveal>
@@ -164,64 +149,78 @@ export function Timeline() {
           <SectionTitle
             eyebrow="Detailed Schedule"
             title="Celebration Itinerary"
-            note="From arrivals to joyful farewells at Ananta Spa & Resort"
+            note="From arrivals to joyful farewells across all 3 days"
           />
           <Ornament className="mt-8" />
 
           {/* Day selection tabs */}
-          <div className="mt-10 flex justify-center gap-2 sm:gap-3">
+          <div className="mt-10 flex flex-wrap justify-center gap-2 sm:gap-3">
             {invitation.itineraryDays.map((day, idx) => (
               <button
                 key={day.dayLabel}
                 type="button"
                 onClick={() => setActiveDay(idx)}
-                className={`rounded-full px-5 py-2.5 font-sans text-xs tracking-[0.2em] uppercase transition-all duration-300 font-semibold cursor-pointer ${
+                className={`flex items-center gap-2 rounded-full px-5 py-2.5 font-sans text-xs sm:text-sm tracking-[0.18em] uppercase transition-all duration-300 font-semibold cursor-pointer ${
                   activeDay === idx
                     ? "bg-primary text-primary-foreground shadow-md scale-105"
-                    : "glass-plate text-primary/70 hover:text-primary"
+                    : "glass-plate text-primary/75 hover:text-primary border border-[color-mix(in_oklab,var(--gold)_35%,transparent)]"
                 }`}
               >
-                {day.dayLabel}
+                <Calendar size={14} className={activeDay === idx ? "text-primary-foreground" : "text-gold-deep"} />
+                <span>{day.dayLabel}</span>
+                <span className="text-[0.66rem] opacity-80">
+                  ({idx === 0 ? "3 Dec" : idx === 1 ? "4 Dec" : "5 Dec"})
+                </span>
               </button>
             ))}
           </div>
 
-          {/* Active day events panel */}
+          {/* Active day events panel with large, clear font sizes for elders */}
           <Reveal delay={0.1} className="mt-8">
-            <div className="plate paper-grain rounded-[2rem] p-6 sm:p-8 border border-[color-mix(in_oklab,var(--gold)_30%,transparent)] shadow-md">
-              <div className="text-center pb-6 border-b border-[color-mix(in_oklab,var(--gold)_20%,transparent)]">
-                <span className="font-sans text-[0.62rem] tracking-[0.3em] uppercase text-gold-deep font-bold">
+            <div className="plate paper-grain rounded-[2.2rem] p-6 sm:p-9 border-2 border-[color-mix(in_oklab,var(--gold)_35%,transparent)] shadow-lg">
+              <div className="text-center pb-6 border-b border-[color-mix(in_oklab,var(--gold)_25%,transparent)]">
+                <span className="font-sans text-[0.66rem] sm:text-xs tracking-[0.3em] uppercase text-gold-deep font-bold">
                   {invitation.itineraryDays[activeDay]?.dateLabel}
                 </span>
-                <h3 className="font-display text-2xl sm:text-3xl text-primary font-medium mt-1">
+                <h3 className="font-display text-2xl sm:text-3xl md:text-4xl text-primary font-medium mt-1">
                   {invitation.itineraryDays[activeDay]?.theme}
                 </h3>
               </div>
 
-              <div className="mt-6 divide-y divide-[color-mix(in_oklab,var(--gold)_15%,transparent)]">
+              <div className="mt-6 divide-y divide-[color-mix(in_oklab,var(--gold)_20%,transparent)]">
                 {invitation.itineraryDays[activeDay]?.events.map((ev, i) => (
-                  <div key={i} className="py-4 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <div
+                    key={i}
+                    className="py-5 first:pt-2 last:pb-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+                  >
                     <div>
-                      <div className="flex items-center gap-2">
-                        <h4 className="font-display text-lg text-primary font-semibold">
+                      <div className="flex items-center gap-2.5">
+                        <h4 className="font-display text-lg sm:text-xl md:text-2xl text-primary font-semibold">
                           {ev.title}
                         </h4>
                         {ev.is24hr && (
-                          <span className="rounded-full bg-gold-deep/15 px-2 py-0.5 text-[0.55rem] tracking-[0.15em] uppercase text-gold-deep font-semibold">
+                          <span className="rounded-full bg-gold-deep/15 px-2.5 py-0.5 text-[0.58rem] tracking-wider uppercase text-gold-deep font-bold">
                             Round the Clock
                           </span>
                         )}
                       </div>
-                      <p className="font-script text-sm sm:text-base text-gold-deep italic">
+
+                      {/* Venue: Hall or Lawn only with prominent font */}
+                      <p className="font-sans text-sm sm:text-base font-semibold text-gold-deep flex items-center gap-1.5 mt-1">
+                        <MapPin size={15} className="shrink-0" />
                         {ev.venue}
                       </p>
+
                       {ev.note && (
-                        <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                        <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
                           {ev.note}
                         </p>
                       )}
                     </div>
-                    <span className="font-sans text-xs tracking-wider text-primary/80 font-medium shrink-0 self-start sm:self-center bg-[color-mix(in_oklab,var(--ivory)_80%,transparent)] px-3 py-1 rounded-full border border-[color-mix(in_oklab,var(--gold)_20%,transparent)]">
+
+                    {/* Time pill with prominent font */}
+                    <span className="font-sans text-sm sm:text-base tracking-wide text-primary font-bold shrink-0 self-start sm:self-center bg-[color-mix(in_oklab,var(--ivory)_95%,transparent)] px-4 py-1.5 rounded-full border border-[color-mix(in_oklab,var(--gold)_30%,transparent)] shadow-2xs flex items-center gap-2">
+                      <Clock size={15} className="text-gold-deep" />
                       {ev.time}
                     </span>
                   </div>
@@ -229,35 +228,6 @@ export function Timeline() {
               </div>
             </div>
           </Reveal>
-        </div>
-
-        {/* Dedicated Guest Services */}
-        <div className="mt-24">
-          <SectionTitle
-            eyebrow="Hospitality & Care"
-            title="Guest Services"
-            note="Thoughtfully arranged for your comfort and convenience"
-          />
-          <Ornament className="mt-8" />
-
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {invitation.guestServices.map((service, idx) => {
-              const IconComp = serviceIcons[service.icon] || Sparkles;
-              return (
-                <Reveal key={service.title} delay={idx * 0.08}>
-                  <div className="plate paper-grain rounded-[1.6rem] p-6 border border-[color-mix(in_oklab,var(--gold)_25%,transparent)] h-full shadow-xs">
-                    <IconComp className="text-gold-deep" size={22} strokeWidth={1.5} />
-                    <h4 className="mt-3 font-display text-xl text-primary font-medium">
-                      {service.title}
-                    </h4>
-                    <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
         </div>
       </div>
     </section>

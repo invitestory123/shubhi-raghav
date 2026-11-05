@@ -101,19 +101,30 @@ export const invitation = {
   },
   celebrations: [
     {
+      id: "welcome-lunch",
+      name: "Welcome Lunch",
+      day: "Day 1",
+      date: "Thursday, 3 December 2026",
+      time: "12:00 PM – 4:00 PM",
+      venue: "Triangular Lawn",
+      address: "Triangular Lawn, Jaipur",
+      description:
+        "A delightful culinary feast to warmly welcome all our guests and commence our wedding celebrations.",
+      dateISO: "2026-12-03T12:00:00+05:30",
+      mapsQuery: "Ananta Spa and Resorts Jaipur",
+    },
+    {
       id: "sagan",
       name: "Sagan Ceremony",
       day: "Day 1",
       date: "Thursday, 3 December 2026",
       time: "7:00 PM onwards",
-      venue: "Sakura, Ananta Spa & Resort",
-      address: "Sakura, Ananta Spa & Resort, Jaipur",
+      venue: "Sakura",
+      address: "Sakura, Jaipur",
       description:
         "Auspicious blessings, exchange of shagun, celebratory music, cocktail & grand welcome dinner.",
       dateISO: "2026-12-03T19:00:00+05:30",
       mapsQuery: "Ananta Spa and Resorts Jaipur",
-      mapsUrl:
-        "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x396da39cb2edc1d3:0xd9cc1f3d0916b4c1?entry=s&sa=X&ved=2ahUKEwj4qIWOnbSXAxWjaHADHSVCDwcQ4kB6BAgUEAA&hl=en",
     },
     {
       id: "gaur",
@@ -121,13 +132,11 @@ export const invitation = {
       day: "Day 2",
       date: "Friday, 4 December 2026",
       time: "9:00 AM",
-      venue: "Yuri, Ananta Spa & Resort",
-      address: "Yuri, Ananta Spa & Resort, Jaipur",
+      venue: "Yuri",
+      address: "Yuri, Jaipur",
       description: "Traditional pooja & sacred bridal blessings invoking divine grace and familial harmony.",
       dateISO: "2026-12-04T09:00:00+05:30",
       mapsQuery: "Ananta Spa and Resorts Jaipur",
-      mapsUrl:
-        "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x396da39cb2edc1d3:0xd9cc1f3d0916b4c1?entry=s&sa=X&ved=2ahUKEwj4qIWOnbSXAxWjaHADHSVCDwcQ4kB6BAgUEAA&hl=en",
     },
     {
       id: "haldi",
@@ -135,44 +144,38 @@ export const invitation = {
       day: "Day 2",
       date: "Friday, 4 December 2026",
       time: "12:00 PM (Noon)",
-      venue: "Ikigai Lawn, Ananta Spa & Resort",
-      address: "Ikigai Lawn, Ananta Spa & Resort, Jaipur",
+      venue: "Ikigai Lawn",
+      address: "Ikigai Lawn, Jaipur",
       description:
         "Sun-kissed turmeric rituals, vibrant beats, fresh floral blooms & joyful splashes of love.",
       dateISO: "2026-12-04T12:00:00+05:30",
       mapsQuery: "Ananta Spa and Resorts Jaipur",
-      mapsUrl:
-        "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x396da39cb2edc1d3:0xd9cc1f3d0916b4c1?entry=s&sa=X&ved=2ahUKEwj4qIWOnbSXAxWjaHADHSVCDwcQ4kB6BAgUEAA&hl=en",
     },
     {
-      id: "baraat",
-      name: "Safabandi & Baraat",
+      id: "safabandi",
+      name: "Safabandi",
       day: "Day 2",
       date: "Friday, 4 December 2026",
       time: "6:30 PM",
-      venue: "Resort Courtyard, Ananta Spa & Resort",
-      address: "Resort Courtyard, Ananta Spa & Resort, Jaipur",
+      venue: "Resort Courtyard",
+      address: "Resort Courtyard, Jaipur",
       description:
-        "Traditional turban tying ceremony followed by the jubilant wedding procession with celebratory dhol beats.",
+        "Traditional turban tying ceremony followed by celebratory dhol beats.",
       dateISO: "2026-12-04T18:30:00+05:30",
       mapsQuery: "Ananta Spa and Resorts Jaipur",
-      mapsUrl:
-        "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x396da39cb2edc1d3:0xd9cc1f3d0916b4c1?entry=s&sa=X&ved=2ahUKEwj4qIWOnbSXAxWjaHADHSVCDwcQ4kB6BAgUEAA&hl=en",
     },
     {
-      id: "pheras",
-      name: "Wedding Ceremony (Pheras)",
+      id: "wedding",
+      name: "Wedding Ceremony",
       day: "Day 2",
       date: "Friday, 4 December 2026",
       time: "7:00 PM onwards",
-      venue: "Waterfall Lawn, Ananta Spa & Resort",
-      address: "Waterfall Lawn, Ananta Spa & Resort, Jaipur",
+      venue: "Waterfall Lawn",
+      address: "Waterfall Lawn, Jaipur",
       description:
         "Varmala, sacred vows around the holy agni fire, blessings of elders & the royal wedding reception dinner.",
       dateISO: "2026-12-04T19:00:00+05:30",
       mapsQuery: "Ananta Spa and Resorts Jaipur",
-      mapsUrl:
-        "https://maps.google.com/maps/place//data=!4m2!3m1!1s0x396da39cb2edc1d3:0xd9cc1f3d0916b4c1?entry=s&sa=X&ved=2ahUKEwj4qIWOnbSXAxWjaHADHSVCDwcQ4kB6BAgUEAA&hl=en",
     },
   ] as EventItem[],
 
@@ -246,13 +249,13 @@ export const invitation = {
         },
         {
           time: "6:30 PM",
-          title: "Safabandi & Baraat",
+          title: "Safabandi",
           venue: "Resort Courtyard",
           note: "Traditional turban tying ceremony & jubilant procession.",
         },
         {
           time: "7:00 PM onwards",
-          title: "Wedding Ceremony (Pheras)",
+          title: "Wedding Ceremony",
           venue: "Waterfall Lawn",
           note: "Varmala, sacred vows around the holy fire & wedding reception dinner.",
         },

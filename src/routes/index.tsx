@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { IntroGate } from "@/components/invitation/IntroGate";
 import { Hero } from "@/components/invitation/Hero";
-import { CoupleStory } from "@/components/invitation/CoupleStory";
 import { Countdown } from "@/components/invitation/Countdown";
-import { Details } from "@/components/invitation/Details";
 import { Timeline } from "@/components/invitation/Timeline";
+import { VenueSection } from "@/components/invitation/VenueSection";
+import { GuestServices } from "@/components/invitation/GuestServices";
 import { Gallery } from "@/components/invitation/Gallery";
 import { Footer } from "@/components/invitation/Footer";
+import { BgmPlayer } from "@/components/invitation/BgmPlayer";
 import { invitation } from "@/content/invitation";
 
 const title = `${invitation.couple.bride} & ${invitation.couple.groom} — Wedding Celebrations | 3–5 December 2026`;
@@ -49,12 +50,13 @@ function Index() {
     <main className="relative w-full overflow-x-hidden bg-background">
       <IntroGate />
       <Hero />
-      <CoupleStory />
       <Countdown />
-      <Details />
       <Timeline />
+      <VenueSection />
+      <GuestServices />
       <Gallery />
       <Footer />
+      <BgmPlayer />
     </main>
   );
 }
