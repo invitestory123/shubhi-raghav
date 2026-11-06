@@ -1,4 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import heroPalace from "@/assets/hero-palace.jpg";
 import bougainvillea from "@/assets/bougainvillea.png";
 import { LanternField } from "./LanternField";
@@ -13,6 +14,16 @@ export function Hero() {
   const plateY = useTransform(scrollY, [0, 900], [0, reduced ? 0 : 70]);
   const titleY = useTransform(scrollY, [0, 600], [0, reduced ? 0 : -60]);
   const fade = useTransform(scrollY, [0, 520], [1, 0]);
+  const scrollIndicatorOpacity = useTransform(scrollY, [0, 80], [1, 0]);
+
+  const handleScrollDown = () => {
+    const nextSection = document.getElementById("countdown-section");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+    }
+  };
 
   return (
     <section className="relative h-[100svh] min-h-[620px] w-full overflow-hidden">
@@ -194,6 +205,29 @@ export function Hero() {
           </span>
         </motion.div>
       </motion.div>
+
+      {/* Royal Animated Scroll Down Indicator with arrow */}
+      <motion.button
+        type="button"
+        onClick={handleScrollDown}
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
+        style={{ opacity: scrollIndicatorOpacity }}
+        className="absolute bottom-4 sm:bottom-6 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer group select-none focus:outline-none"
+        aria-label="Scroll down to explore invitation"
+      >
+        <span className="font-sans text-[0.58rem] sm:text-[0.64rem] tracking-[0.32em] uppercase text-primary/75 font-semibold group-hover:text-gold-deep transition-colors">
+          Scroll Down
+        </span>
+        <motion.div
+          animate={reduced ? {} : { y: [0, 5, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full glass-plate border border-gold-deep/35 shadow-sm group-hover:border-gold-deep group-hover:bg-gold-deep/15 transition-all"
+        >
+          <ChevronDown size={17} className="text-gold-deep group-hover:text-primary transition-colors" />
+        </motion.div>
+      </motion.button>
     </section>
   );
 }

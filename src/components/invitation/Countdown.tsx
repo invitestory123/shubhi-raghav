@@ -93,7 +93,7 @@ export function Countdown() {
   }, [target]);
 
   return (
-    <section className="relative overflow-hidden px-5 py-24">
+    <section id="countdown-section" className="relative overflow-hidden px-5 py-24">
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
