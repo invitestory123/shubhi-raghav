@@ -257,11 +257,27 @@ export function ScratchDateCard() {
     <div className="relative mx-auto max-w-xl px-2 sm:px-0">
       <div
         ref={containerRef}
-        className="plate paper-grain relative overflow-hidden rounded-[2.2rem] border-2 border-[color-mix(in_oklab,var(--gold)_45%,transparent)] p-8 sm:p-12 shadow-lg min-h-[220px] flex items-center justify-center"
+        className="relative overflow-hidden rounded-[2.2rem] border-2 border-[color-mix(in_oklab,var(--gold)_55%,transparent)] p-8 sm:p-12 shadow-2xl min-h-[220px] flex items-center justify-center select-none"
+        style={{
+          background: "radial-gradient(ellipse at 50% 35%, #3E161D 0%, #290D13 65%, #180608 100%)",
+          boxShadow: "0 24px 55px -15px rgba(24, 6, 8, 0.45), inset 0 0 35px rgba(212, 175, 55, 0.2)",
+        }}
       >
-        {/* Underneath Revealed Content: Only "4 December 2026" and Add to Calendar button */}
+        {/* Subtle royal ornate inner border */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-2.5 sm:inset-3 rounded-[1.8rem] border border-amber-300/35"
+        />
+
+        {/* Delicate corner star flourishes */}
+        <span aria-hidden className="pointer-events-none absolute top-4 left-4 text-amber-300/60 text-xs">✦</span>
+        <span aria-hidden className="pointer-events-none absolute top-4 right-4 text-amber-300/60 text-xs">✦</span>
+        <span aria-hidden className="pointer-events-none absolute bottom-4 left-4 text-amber-300/60 text-xs">✦</span>
+        <span aria-hidden className="pointer-events-none absolute bottom-4 right-4 text-amber-300/60 text-xs">✦</span>
+
+        {/* Underneath Revealed Content: Only "4 December 2026" and Add to Calendar button in luxurious styling */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center">
-          <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-wide text-primary">
+          <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-wide bg-gradient-to-r from-amber-100 via-amber-200 to-amber-400 bg-clip-text text-transparent drop-shadow-[0_2px_18px_rgba(251,191,36,0.45)]">
             4 December 2026
           </h3>
 
@@ -284,7 +300,7 @@ export function ScratchDateCard() {
                 ].map((sp, idx) => (
                   <motion.div
                     key={idx}
-                    className="absolute text-amber-400"
+                    className="absolute text-amber-300"
                     style={{ top: sp.top, left: sp.left, right: sp.right, bottom: sp.bottom }}
                     animate={{
                       scale: [0.6, 1.4, 0.8],
@@ -312,7 +328,12 @@ export function ScratchDateCard() {
               download={`${invitation.couple.bride.toLowerCase()}-${invitation.couple.groom.toLowerCase()}-wedding.ics`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 font-sans text-xs sm:text-sm tracking-[0.2em] text-primary-foreground uppercase shadow-md font-semibold cursor-pointer"
+              className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-sans text-xs sm:text-sm tracking-[0.2em] uppercase font-bold cursor-pointer transition-all"
+              style={{
+                background: "linear-gradient(135deg, #D4AF37 0%, #F5DEB3 50%, #C59B27 100%)",
+                color: "#240A0F",
+                boxShadow: "0 4px 20px rgba(212, 175, 55, 0.45)",
+              }}
             >
               <CalendarPlus size={16} /> Add to Calendar
             </motion.a>
