@@ -104,22 +104,43 @@ export function ScratchDateCard() {
     });
 
     // Elegant text prompts
-    ctx.fillStyle = "#3D2B1F";
-    ctx.font = "bold 13px 'Karla', sans-serif";
     ctx.textAlign = "center";
-    ctx.letterSpacing = "0.22em";
+
+    // 1. Sacred Invocations
+    ctx.fillStyle = "#3D2B1F";
+    const ganeshaSize = Math.min(12, Math.max(9.5, Math.floor(width * 0.03)));
+    ctx.letterSpacing = "0.14em";
+    ctx.font = `bold ${ganeshaSize}px 'Karla', sans-serif`;
     ctx.fillText("॥ श्री गणेशाय नमः ॥", width / 2, height / 2 - 42);
 
+    // 2. Main Title: "SAVE OUR WEDDING DATE" with responsive fitting within safe inner borders
     ctx.fillStyle = "#2A1810";
-    ctx.font = "600 20px 'Marcellus', Georgia, serif";
+    const maxTitleWidth = width - 74; // safe inner margins away from corner flourishes & borders
+    let titleFontSize = Math.min(18, Math.max(11, Math.floor(width * 0.046)));
+    ctx.letterSpacing = "0.05em";
+    ctx.font = `600 ${titleFontSize}px 'Marcellus', Georgia, serif`;
+    while (ctx.measureText("SAVE OUR WEDDING DATE").width > maxTitleWidth && titleFontSize > 10) {
+      titleFontSize -= 0.5;
+      ctx.font = `600 ${titleFontSize}px 'Marcellus', Georgia, serif`;
+    }
     ctx.fillText("SAVE OUR WEDDING DATE", width / 2, height / 2 - 8);
 
+    // 3. Scratch Prompt
     ctx.fillStyle = "#5A3D22";
-    ctx.font = "italic 14px 'Cormorant Garamond', Georgia, serif";
+    ctx.letterSpacing = "0px";
+    let subFontSize = Math.min(13, Math.max(9.5, Math.floor(width * 0.033)));
+    ctx.font = `italic ${subFontSize}px 'Cormorant Garamond', Georgia, serif`;
+    while (ctx.measureText("✨ Scratch with finger or mouse to reveal ✨").width > maxTitleWidth && subFontSize > 9) {
+      subFontSize -= 0.5;
+      ctx.font = `italic ${subFontSize}px 'Cormorant Garamond', Georgia, serif`;
+    }
     ctx.fillText("✨ Scratch with finger or mouse to reveal ✨", width / 2, height / 2 + 24);
 
+    // 4. Couple Names
     ctx.fillStyle = "rgba(61, 43, 31, 0.75)";
-    ctx.font = "500 11px 'Karla', sans-serif";
+    ctx.letterSpacing = "0.08em";
+    const coupleSize = Math.min(11, Math.max(9, Math.floor(width * 0.028)));
+    ctx.font = `500 ${coupleSize}px 'Karla', sans-serif`;
     ctx.fillText("Shubhi & Raghav", width / 2, height / 2 + 54);
 
     setIsRevealed(false);
@@ -128,6 +149,11 @@ export function ScratchDateCard() {
 
   useEffect(() => {
     initCanvas();
+    if (typeof document !== "undefined" && document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        if (!isRevealed) initCanvas();
+      });
+    }
     const handleResize = () => {
       if (!isRevealed) initCanvas();
     };

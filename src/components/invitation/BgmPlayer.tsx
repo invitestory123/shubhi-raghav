@@ -65,7 +65,7 @@ export function BgmPlayer() {
       />
 
       {/* Floating Minimized Widget */}
-      <div className="fixed bottom-5 right-5 z-40 select-none">
+      <div className="fixed bottom-3.5 right-3.5 sm:bottom-5 sm:right-5 z-40 select-none">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}

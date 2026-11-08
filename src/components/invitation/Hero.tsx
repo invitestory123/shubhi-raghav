@@ -214,7 +214,7 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
         style={{ opacity: scrollIndicatorOpacity }}
-        className="absolute bottom-4 sm:bottom-6 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer group select-none focus:outline-none"
+        className="absolute bottom-28 sm:bottom-10 md:bottom-12 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer group select-none focus:outline-none"
         aria-label="Scroll down to explore invitation"
       >
         <span className="font-sans text-[0.58rem] sm:text-[0.64rem] tracking-[0.32em] uppercase text-primary/75 font-semibold group-hover:text-gold-deep transition-colors">
