@@ -1,9 +1,8 @@
-import { Sparkles, Shirt, Scissors } from "lucide-react";
+import { Sparkles, Scissors, type LucideIcon } from "lucide-react";
 import { invitation } from "@/content/invitation";
 import { Ornament, Reveal, SectionTitle } from "./Reveal";
 
-const serviceIcons: Record<string, typeof Shirt> = {
-  Shirt,
+const serviceIcons: Record<string, LucideIcon> = {
   Scissors,
   Sparkles,
 };
@@ -19,7 +18,7 @@ export function GuestServices() {
         />
         <Ornament className="mt-8" />
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto gap-5">
           {invitation.guestServices.map((service, idx) => {
             const IconComp = serviceIcons[service.icon] || Sparkles;
             return (

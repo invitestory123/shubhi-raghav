@@ -206,26 +206,26 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Royal Animated Scroll Down Indicator with arrow */}
+      {/* Royal Animated Scroll Down Indicator with prominent arrow and high-visibility pill */}
       <motion.button
         type="button"
         onClick={handleScrollDown}
-        initial={{ opacity: 0, y: 14 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
         style={{ opacity: scrollIndicatorOpacity }}
-        className="absolute bottom-28 sm:bottom-10 md:bottom-12 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer group select-none focus:outline-none"
+        className="absolute bottom-24 sm:bottom-10 md:bottom-12 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group select-none focus:outline-none"
         aria-label="Scroll down to explore invitation"
       >
-        <span className="font-sans text-[0.58rem] sm:text-[0.64rem] tracking-[0.32em] uppercase text-primary/75 font-semibold group-hover:text-gold-deep transition-colors">
+        <span className="font-sans text-xs sm:text-[0.8rem] tracking-[0.28em] uppercase text-primary font-bold px-4 py-1.5 rounded-full bg-[color-mix(in_oklab,var(--ivory)_95%,white)] backdrop-blur-md border border-gold-deep/60 shadow-md group-hover:text-gold-deep group-hover:border-gold-deep transition-all">
           Scroll Down
         </span>
         <motion.div
-          animate={reduced ? {} : { y: [0, 5, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full glass-plate border border-gold-deep/35 shadow-sm group-hover:border-gold-deep group-hover:bg-gold-deep/15 transition-all"
+          animate={reduced ? {} : { y: [0, 7, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--ivory)_95%,white)] backdrop-blur-md border-2 border-gold-deep shadow-[0_4px_20px_rgba(201,154,69,0.35)] group-hover:border-gold-deep group-hover:bg-gold-deep/20 group-hover:scale-110 transition-all"
         >
-          <ChevronDown size={17} className="text-gold-deep group-hover:text-primary transition-colors" />
+          <ChevronDown size={26} strokeWidth={2.6} className="text-gold-deep group-hover:text-primary transition-colors" />
         </motion.div>
       </motion.button>
     </section>

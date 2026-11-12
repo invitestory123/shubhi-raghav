@@ -294,11 +294,6 @@ export const invitation = {
 
   guestServices: [
     {
-      title: "Ironing Assistance",
-      description: "Complimentary garment pressing service to keep your wedding attire impeccable.",
-      icon: "Shirt",
-    },
-    {
       title: "Men's Grooming",
       description: "Professional grooming & styling assistance available on-site.",
       icon: "Scissors",
